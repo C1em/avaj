@@ -14,6 +14,9 @@ public class Baloon extends Aircraft implements Flyable
 	public void		updateConditions()
 	{
 		weatherTower.getWeather(this.coordinates);
+		// check weather and cahneg coordinates ???
+		if (this.coordinates.getHeight() <= 0)
+			weatherTower.unregister(this);
 	}
 	@Override
 	public void		registerTower(WeatherTower weatherTower)

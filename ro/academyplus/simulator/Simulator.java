@@ -2,6 +2,7 @@ package ro.academyplus.simulator;
 
 import ro.academyplus.simulator.aircraft.AircraftFactory;
 import ro.academyplus.simulator.aircraft.Flyable;
+import ro.academyplus.simulator.tower.WeatherProvider;
 import ro.academyplus.simulator.tower.WeatherTower;
 
 public class Simulator {
@@ -11,5 +12,6 @@ public class Simulator {
 		WeatherTower weatherTower = new WeatherTower();
 		Flyable flyable = AircraftFactory.newAircraft("Baloon", "yoyo", 1, 1, 1);
 		flyable.registerTower(weatherTower);
+		System.out.println(WeatherProvider.getProvider());
 	}
 }
