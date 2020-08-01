@@ -1,11 +1,14 @@
 package ro.academyplus.simulator.tower;
 
 import ro.academyplus.simulator.aircraft.Flyable;
+
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Tower
 {
-	LinkedList<Flyable> observers = new LinkedList<Flyable>();
+	private LinkedList<Flyable> observers = new LinkedList<Flyable>();
+	private Iterator<Flyable> it;
 
 	public void		register(Flyable flyable)
 	{
@@ -13,11 +16,12 @@ public class Tower
 	}
 	public void		unregister(Flyable flyable)
 	{
-		observers.remove(flyable);
+		it.remove();
 	}
 	protected void	conditionsChanged()
 	{
-		for (Flyable flyable : observers)
-			flyable.updateConditions();
+		it = observers.iterator();
+		while (it.hasNext())
+			it.next().updateConditions();
 	}
 }
